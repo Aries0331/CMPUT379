@@ -1,0 +1,25 @@
+1. a. file1 and file7 are separate and unique while file2,3,4,5,6,8 are not.
+
+b. “2” represent the number of hard links to this new directory(or number of links of entries in the directory). We call the mkdir() system call to create the new directory and allocate a new file of type directory. In that new directory, it automatically creates two  entries(that’s where two come from). One is “.” and the other one is “..”.
+
+c. The number remain unchanged which is still 2.
+
+d. The number changes to 3. Since this time we create a new directory instead of a regular file in 1c, in addition to the 2 links before, there is now a new link “..” in this sub-directory point to the directory created in 1b, which is 2+1=2.
+
+2. a. The original file does not show any indication of the symbolic link.
+
+b. There is not any indication for the original directory that a link has been created.
+
+c. A symbolic link will be created even if the file does not exist or the file has been deleted.
+
+d. A error message says “Too many levels of symbolic links.” This is because when we create the soft link, we use the relative path name. Absolute path name will solve the problem.
+
+3. a. The number after permissions grow from 1 to 2, which indicates that there are 2 links to the original file.
+
+b. Change the permissions of the original file also change the permission of the link. Also, update the modification time of the original file, the link also changes. 
+
+c. There is no way to tell the difference, since they are the same file with different names.
+
+d. After delete the original file, the link file is still there since it’s a hard link.
+
+e. If we make a hard link to a directory, we will get the error message that “hard link not allowed for directory”. Also, the link will fail if the file is not exist.
